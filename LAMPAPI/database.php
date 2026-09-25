@@ -1,12 +1,10 @@
 <?php
-	require_once __DIR__ . "/database.php";
-
 	$inData = getRequestInfo();
 	
 	$color = $inData["color"];
 	$userId = $inData["userId"];
 
-	$conn = connectDatabase();
+	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
 	if ($conn->connect_error) 
 	{
 		returnWithError( $conn->connect_error );

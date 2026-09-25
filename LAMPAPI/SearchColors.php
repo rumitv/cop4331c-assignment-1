@@ -1,11 +1,12 @@
 <?php
+	require_once __DIR__ . "/database.php";
 
 	$inData = getRequestInfo();
 	
 	$searchResults = "";
 	$searchCount = 0;
 
-	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
+	$conn = connectDatabase();
 	if ($conn->connect_error) 
 	{
 		returnWithError( $conn->connect_error );
