@@ -1,0 +1,67 @@
+@startuml
+left to right direction
+class LoginPage <<index.html>> {
+  +loginName : input
+  +loginPassword : input
+  +loginResult : span
+}
+class ColorPage <<color.html>> {
+  +searchText : input
+  +colorText : input
+  +colorList : p
+  +colorSearchResult : span
+  +colorAddResult : span
+}
+class ClientScript <<js/code.js>> {
+  -urlBase : string
+  -userId : int
+  -firstName : string
+  -lastName : string
+  +doLogin()
+  +saveCookie()
+  +readCookie()
+  +doLogout()
+  +addColor()
+  +searchColor()
+}
+class LoginAPI <<Login.php>> {
+  +getRequestInfo()
+  +returnWithInfo(first, last, id)
+  +returnWithError(err)
+}
+class AddColorAPI <<AddColor.php>> {
+  +getRequestInfo()
+  +returnWithError(err)
+}
+class SearchColorsAPI <<SearchColors.php>> {
+  +getRequestInfo()
+  +returnWithInfo(results)
+  +returnWithError(err)
+}
+class Database <<database.php>> {
+  +connectDatabase() : mysqli
+}
+class User <<Users table>> {
+  +ID : int
+  +firstName : string
+  +lastName : string
+  +Login : string
+  +Password : string
+}
+class Color <<Colors table>> {
+  +ID : int
+  +UserID : int
+  +Name : string
+}
+LoginPage ..> ClientScript : onclick doLogin()
+ColorPage ..> ClientScript : onclick add / search / logout
+ClientScript ..> LoginAPI : POST JSON
+ClientScript ..> AddColorAPI : POST JSON
+ClientScript ..> SearchColorsAPI : POST JSON
+LoginAPI ..> Database : uses
+AddColorAPI ..> Database : uses
+SearchColorsAPI ..> Database : uses
+Database --> User : queries
+Database --> Color : queries
+User "1" --> "0..*" Color : owns
+@enduml
