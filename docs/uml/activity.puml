@@ -1,0 +1,41 @@
+@startuml
+start
+:Open index.html;
+repeat
+  :Enter username and password;
+  :doLogin(): POST /Login.php;
+  if (Row found in Users?) then (yes)
+  else (no)
+    :Show "User/Password combination incorrect";
+  endif
+repeat while (Login failed?) is (yes) not (no)
+:saveCookie() (20 minute cookie);
+:Redirect to color.html;
+:readCookie();
+if (userId valid?) then (no)
+  :Redirect to index.html;
+  stop
+else (yes)
+endif
+repeat
+  switch (User action?)
+  case (Add Color)
+    :addColor(): POST /AddColor.php;
+    :INSERT into Colors (UserId, Name);
+    :Show "Color has been added";
+  case (Search Color)
+    :searchColor(): POST /SearchColors.php;
+    :SELECT Name FROM Colors\nWHERE Name LIKE %text% AND UserID;
+    if (Any matches?) then (yes)
+      :Display list of color names;
+    else (no)
+      :Server returns "No Records Found";
+    endif
+  case (Log Out)
+    :doLogout(): clear cookie;
+    :Redirect to index.html;
+    stop
+  endswitch
+repeat while (Continue?) is (yes)
+stop
+@enduml
