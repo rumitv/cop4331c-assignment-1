@@ -1,0 +1,37 @@
+{
+  "name": "cop4331c-assignment-1",
+  "version": "1.0.0",
+  "description": "COLORS is a web application that allows a user to signs in, add color names, searches their saved colors, and logs out.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  
+  "scripts": {
+    "lint:html": "htmlhint index.html color.html",
+    "lint:css": "stylelint \"css/**/*.css\"",
+    "lint:js": "eslint js/code.js",
+    "lint": "npm run lint:html && npm run lint:css && npm run lint:js"
+  },
+
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rumitv/cop4331c-assignment-1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/rumitv/cop4331c-assignment-1/issues"
+  },
+  "homepage": "https://github.com/rumitv/cop4331c-assignment-1#readme",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.14.0",
+    "globals": "^17.14.0",
+    "htmlhint": "^1.9.2",
+    "stylelint": "^18.0.0",
+    "stylelint-config-recommended": "^19.0.0"
+  }
+}
