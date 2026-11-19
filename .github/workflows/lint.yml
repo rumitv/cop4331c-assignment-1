@@ -32,3 +32,6 @@ jobs:
 
       - name: Lint JavaScript
         run: npm run lint:js
+        
+      - name: Run Unit and Integration Tests
+        run: npm test -- --ci

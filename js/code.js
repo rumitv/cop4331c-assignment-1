@@ -108,9 +108,21 @@ function doLogout()
 	window.location.href = "index.html";
 }
 
+function normalizeColorName(value)
+{
+    if (typeof value !== "string")
+    {
+        return "";
+    }
+
+    return value.trim();
+}
+
 function addColor()
 {
-	let newColor = document.getElementById("colorText").value;
+	let newColor = normalizeColorName(
+		document.getElementById("colorText").value
+	);
 	document.getElementById("colorAddResult").innerHTML = "";
 
 	let tmp = {color:newColor,userId:userId};
