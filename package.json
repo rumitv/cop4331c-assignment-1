@@ -6,14 +6,13 @@
   "directories": {
     "doc": "docs"
   },
-  
   "scripts": {
     "lint:html": "htmlhint index.html color.html",
     "lint:css": "stylelint \"css/**/*.css\"",
     "lint:js": "eslint js/code.js",
-    "lint": "npm run lint:html && npm run lint:css && npm run lint:js"
+    "lint": "npm run lint:html && npm run lint:css && npm run lint:js",
+    "test": "jest --runInBand"
   },
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rumitv/cop4331c-assignment-1.git"
@@ -31,6 +30,7 @@
     "eslint": "^10.14.0",
     "globals": "^17.14.0",
     "htmlhint": "^1.9.2",
+    "jest": "^30.5.2",
     "stylelint": "^18.0.0",
     "stylelint-config-recommended": "^19.0.0"
   }
